@@ -17,8 +17,10 @@ app.use(session({
 }))
 
 app.get("/home", (req, res) =>{
-  console.log("there r a home request")
-  res.send({"hello": Math.floor(Math.random() * 101)})
+  // console.log("there r a home request")
+  const number = Math.floor(Math.random() * 101)
+  console.log(number)
+  res.send({"hello": number})
 })
 
 app.listen(PORT, "localhost", () => {
