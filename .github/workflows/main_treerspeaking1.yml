@@ -30,7 +30,7 @@ jobs:
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_d1a25f551b8a49dc9b3ef3b754f4b189 }}/myserver:${{ github.sha }}
+        tags: index.docker.io/treesrpeaking/myserver:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
