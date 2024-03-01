@@ -1,0 +1,36 @@
+version: '3'
+services:
+Mix – Caedrel
+
+VN
+
+Skip navigation
+Search
+
+
+
+
+9+
+
+Avatar image
+1/25
+同担☆拒否 feat. ちゅーたん（CV：早見沙織）／HoneyWorks
+  front:
+    image: treerspeaking/random-num-generator-front-end:v1
+    container_name: front-end
+    build: ./client
+    depends_on:
+      - server
+    ports:
+      - "3000:3000"
+    # watch:
+    #   - ./src
+  server:
+    image: treerspeaking/random-num-generator-back-end:v1
+    container_name: back-end
+    build: ./server
+    ports:
+      - 8000:8000
+
+    # watch:
+    #   - server.js

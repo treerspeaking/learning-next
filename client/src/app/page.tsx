@@ -4,9 +4,12 @@
 
 // import { get } from "http";
 // import Image from "next/image";
-import { Button } from "./Button";
+import { Box, Typography } from "@mui/material";
+import Button  from "./ClientButton";
+
 // import { revalidate } from "./api/hello/route";
-// // export const revalidate = 1
+// import { revalidate } from './api/hello/route';
+// export const revalidate = 1
 
 // export default async function Page() {
 //   const data_call = async () => {
@@ -49,15 +52,16 @@ import { Button } from "./Button";
 //   )
 // }
 export default async function Page() {
-  let data_call = await fetch("http://localhost:3000/api/hello", {next: {revalidate: 0}});
-  let data = await data_call.text();
+  // let data_call = await fetch("http://localhost:3000/api/hello", {next: {revalidate: 0}});
+  let data_call = await fetch("http://server:8000/home", {next: {revalidate: 0}})
+  let data = await data_call.json().catch(err => {console.log(err); return {data: {hello: "this is error"}}});
 
  
   return (
-  <form >      
-    <input type="text" name="name" aria-label="123"/>
-    <Button type="submit">Update User Name</Button>
-    <p>{data}</p>
-  </form>
+  <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: "100vh" }}>
+    <Button>Click me To generate a new number</Button>
+    <Typography sx={{p:1}}>{data.hello}</Typography>
+    {/* <Typography>{data}</Typography> */}
+  </Box>
   )
 }
