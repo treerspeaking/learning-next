@@ -1,9 +1,11 @@
 const express = require("express")
 const session = require("express-session")
+const cors = require("cors")
 const bodyParser = require("body-parser")
 const app = express();
 const PORT = 8000;
 
+app.use(cors())
 app.use(bodyParser.json()) // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true }))
 // app.use(express.json())
@@ -51,7 +53,7 @@ app.post("/login", (req, res) => {
       }
       else {
         res.json({
-          "msg": "bad request"
+          "msg": "bad requestsd"
         })
       }
     }

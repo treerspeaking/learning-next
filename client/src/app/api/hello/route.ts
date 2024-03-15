@@ -6,5 +6,5 @@ export async function GET(request: NextRequest){
   const res = await fetch("http://server:8000/home")
   // const data = await res.json();
   const data = await res.json()
-  return Response.json({data})
+  return Response.json(data)
 }

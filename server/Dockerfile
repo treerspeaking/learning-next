@@ -1,12 +1,14 @@
+FROM curlimages/curl:latest
 FROM node:21-alpine3.18
-
 
 WORKDIR /app
 
 COPY . .
 
+RUN yarn global add nodemon
+
 RUN npm i
 
-CMD ["node" , "server.js"]
+CMD ["npm" , "run", "dev"]
 
 EXPOSE 8000

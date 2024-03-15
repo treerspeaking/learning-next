@@ -6,6 +6,7 @@
 // import Image from "next/image";
 import { Box, Typography } from "@mui/material";
 import Button  from "./ClientButton";
+import { RandomClient } from "./Client-page";
 
 // import { revalidate } from "./api/hello/route";
 // import { revalidate } from './api/hello/route';
@@ -53,14 +54,17 @@ import Button  from "./ClientButton";
 // }
 export default async function Page() {
   // let data_call = await fetch("http://localhost:3000/api/hello", {next: {revalidate: 0}});
+  // this server:8000/home is inside a docker container calling another docker container on the server
   let data_call = await fetch("http://server:8000/home", {next: {revalidate: 0}})
+  // on the web we could not call this
   let data = await data_call.json().catch(err => {console.log(err); return {data: {hello: "this is error"}}});
 
  
   return (
   <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: "100vh" }}>
-    <Button>Click me To generate a new number</Button>
+    <Button>Click me To generate a server side number</Button>
     <Typography sx={{p:1}}>{data.hello}</Typography>
+    <RandomClient/>
     {/* <Typography>{data}</Typography> */}
   </Box>
   )
